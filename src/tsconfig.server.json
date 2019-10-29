@@ -3,11 +3,10 @@
   "compilerOptions": {
     "outDir": "../out-tsc/app-server",
     "module": "commonjs",
-    "types": []
+    "types": [
+			"node"
+		]
   },
-  "files": [
-    "main.server.ts"
-  ],
   "exclude": [
     "test.ts",
     "**/*spec.ts"

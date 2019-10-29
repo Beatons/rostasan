@@ -2,38 +2,26 @@
   "compileOnSave": false,
   "compilerOptions": {
     "removeComments": true,
-    "allowJs": true,
     "outDir": "./dist/out-tsc",
-    "sourceMap": true,
     "declaration": false,
-    "module": "commonjs",
+    "module": "esnext",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "importHelpers": true,
-    "noImplicitAny": false,
-    "target": "es5",
+    "target": "es2015",
     "typeRoots": ["node_modules/@types"],
-    "lib": ["es2019", "dom", "esnext.array"],
-    "esModuleInterop": true,
-    "baseUrl": "./src",
+    "lib": ["es2017", "dom"],
+    "baseUrl": "./",
     "paths": {
       "*": [
         "*",
-        "./app/*",
+        "./src/app/*",
         "./src/@models",
         "./src/@types",
-        "./node_modules/*",
-        "../node_modules/*",
-        "../../node_modules/*",
-        "../../../node_modules/*"
+        "**/node_modules/**/*"
       ],
       "@angular/*": ["../node_modules/@angular/*"],
       "webpack/*": ["../node_modules/webpack/*"]
     }
-  },
-  "angularCompilerOptions": {
-    "enableIvy": false,
-    "allowEmptyCodegenFiles": true
   }
 }

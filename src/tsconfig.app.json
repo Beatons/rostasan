@@ -1,16 +1,11 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../out-tsc/app",
-    "module": "commonjs",
-    "types": []
+		"outDir": "../out-tsc/app",
+		"sourceMap": true,
+    "types": [
+			"node"
+		]
   },
   "exclude": ["node_modules", "test.ts", "**/*.spec.ts"],
-  "include": [
-    "../src/**/*",
-    "../models/**/*.ts",
-    "./node_modules/@ngtools/webpack/src/index.js"
-  ],
-  "files": ["main.ts", "polyfills.ts", "typings.d.ts"],
-  "filesGlob": ["main.ts", "typings.d.ts", "app/**/*.ts"]
 }

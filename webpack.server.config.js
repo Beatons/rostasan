@@ -5,49 +5,46 @@ module.exports = {
   mode: 'none',
   entry: {
     // This is our Express server for Dynamic universal
-    server: './server.ts'
+    server: './server.ts',
   },
   target: 'node',
   resolve: {
-    extensions: [
-      '.ts',
-      '.js'
-    ]
+    extensions: ['.ts', '.js'],
   },
   optimization: {
-    minimize: false
+    minimize: false,
   },
-  externals: [/^firebase/],
+  externals: [/(node_modules|main\..*\.js)/, /^firebase/],
   output: {
     // Altered for installing Angular Universal server side rendering
     path: path.join(__dirname, 'dist'),
     library: 'app',
     libraryTarget: 'umd',
-    filename: '[name].js'
+    filename: '[name].js',
   },
   module: {
     rules: [
-      { test: /\.ts$/, loader: 'ts-loader' },
+      {test: /\.ts$/, loader: 'ts-loader'},
       {
         // Mark files inside `@angular/core` as using SystemJS style dynamic imports.
         // Removing this will cause deprecation warnings to appear.
         test: /(\\|\/)@angular(\\|\/)core(\\|\/).+\.js$/,
-        parser: { system: true }
-      }
-    ]
+        parser: {system: true},
+      },
+    ],
   },
   plugins: [
     new webpack.ContextReplacementPlugin(
       // fixes WARNING Critical dependency: the request of a dependency is an expression
       /(.+)?angular(\\|\/)core(.+)?/,
       path.join(__dirname, 'src'), // location of your src
-      {} // a map of your routes
+      {}, // a map of your routes
     ),
     new webpack.ContextReplacementPlugin(
       // fixes WARNING Critical dependency: the request of a dependency is an expression
       /(.+)?express(\\|\/)(.+)?/,
       path.join(__dirname, 'src'),
-      {}
-    )
-  ]
+      {},
+    ),
+  ],
 };
